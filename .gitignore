@@ -1,0 +1,72 @@
+# Visual Studio
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ASP.NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet
+*.nupkg
+*.nuspec
+*.snupkg
+packages/
+# Uncomment if necessary
+# packages/*
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code
+.history/
+*.code-workspace
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# SQLite database
+*.db
+*.sqlite
+*.sqlite3
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.generated.cs
+*.generated.cpp
+*.log
+*.tlog
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# ASP.NET Razor
+*.rsp
+
+# Resharper
+_ReSharper.Caches/
+
+# Web Servers
+.localhistory/
