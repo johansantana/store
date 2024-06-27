@@ -22,40 +22,15 @@ namespace Store.Pages.Item
         [BindProperty]
         public Model.Item Item { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var item = await _context.Item.FirstOrDefaultAsync(m => m.ID == id);
-
-            if (item == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                Item = item;
-            }
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public IActionResult OnPost(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var item = await _context.Item.FindAsync(id);
-            if (item != null)
-            {
-                Item = item;
-                _context.Item.Remove(Item);
-                await _context.SaveChangesAsync();
-            }
 
             return RedirectToPage("./Index");
         }
