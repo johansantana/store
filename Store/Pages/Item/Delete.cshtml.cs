@@ -20,17 +20,39 @@ namespace Store.Pages.Item
         }
 
         [BindProperty]
-        public Model.Item Item { get; set; } = default!;
+        public Model.Item? Item { get; set; } = default!;
 
         public IActionResult OnGet(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Item = _context.Item.FirstOrDefault(m => m.ID == id);
+
+            if (Item == null)
+            {
+                return NotFound();
+            }
 
             return Page();
         }
 
         public IActionResult OnPost(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            Item = _context.Item.Find(id);
+
+            if (Item != null)
+            {
+                _context.Item.Remove(Item);
+                _context.SaveChanges();
+            }
 
             return RedirectToPage("./Index");
         }
