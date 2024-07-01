@@ -5,25 +5,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Productos</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-primary">Agregar producto</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Item[0].Name)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item[0].Description)
+                Cantidad
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item[0].Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item[0].Price)
+                Precio
             </th>
             <th></th>
         </tr>
@@ -35,18 +32,15 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary">Editar</a>
+                <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-secondary">Detalles</a>
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
 }
