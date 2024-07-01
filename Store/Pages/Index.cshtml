@@ -7,3 +7,78 @@
 <div class="text-center">
     <h1 class="display-4">Bienvenido a nuestro sistema de Ferretería</h1>
 </div>
+<h1>Index</h1>
+
+<h4>Proveedor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Proveedor.Nombre" class="control-label"></label>
+                <input asp-for="Proveedor.Nombre" class="form-control" />
+                <span asp-validation-for="Proveedor.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proveedor.Contacto" class="control-label"></label>
+                <input asp-for="Proveedor.Contacto" class="form-control" />
+                <span asp-validation-for="Proveedor.Contacto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proveedor.CorreoElectronico" class="control-label"></label>
+                <input asp-for="Proveedor.CorreoElectronico" class="form-control" />
+                <span asp-validation-for="Proveedor.CorreoElectronico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <form method="post">
+        <button type="submit" asp-page="./AgregarProveedor" class="btn btn-primary">Agregar Proveedor</button>
+    </form>
+
+}
+<div>
+    @if (!string.IsNullOrEmpty(Model.Mensaje))
+    {
+        <p>@Model.Mensaje</p>
+    }
+</div>
+ List<Proveedor> <!-- Modelo con la lista de proveedores -->
+
+<h1>Lista de Proveedores</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            <th>Correo Electrónico</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+              
+            @foreach (var proveedores in Model)
+        {
+            <tr>
+                <td>@proveedores.Nombre</td>
+                <td>@proveedores.Contacto</td>
+                <td>@proveedores.CorreoElectronico</td>
+                <td>
+                    <a asp-page="./EditarProveedor" asp-route-id="@proveedores.Id">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
