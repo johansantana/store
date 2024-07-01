@@ -28,3 +28,62 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+
+public class Proveedor
+{
+    public int Id { get; set; }
+    public string Nombre { get; set; }
+    public string Contacto { get; set; }
+    public string CorreoElectronico { get; set; }
+    // Otras propiedades...
+}
+
+
+public class AgregarProveedorModel : PageModel
+{
+    private readonly StoreContext _context;
+    private readonly ILogger<AgregarProveedorModel> _logger;
+
+    public AgregarProveedorModel(StoreContext context, ILogger<AgregarProveedorModel> logger)
+    {
+        _context = context;
+        _logger = logger;
+    }
+
+    [BindProperty]
+    public Proveedor Proveedor { get; set; }
+
+    // Propiedad para almacenar el mensaje
+    public string Mensaje { get; set; }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
+        try
+        {
+            _context.Proveedor.Add(Proveedor);
+            await _context.SaveChangesAsync();
+
+            // Mensaje de depuración: proveedor agregado correctamente
+            _logger.LogInformation("Proveedor agregado correctamente: {ProveedorId}", Proveedor.Id);
+
+            // Asigna el mensaje de éxito
+            Mensaje = "Proveedor agregado correctamente";
+
+            return RedirectToPage("./ListaProveedores");
+        }
+        catch (Exception ex)
+        {
+            // Mensaje de depuración: error al agregar el proveedor
+            _logger.LogError(ex, "Error al agregar el proveedor");
+
+            // Asigna el mensaje de error
+            Mensaje = "Hubo un error al agregar el proveedor";
+
+            return Page();
+        }
