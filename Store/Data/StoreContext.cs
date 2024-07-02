@@ -15,5 +15,6 @@ namespace Store.Data
         }
 
         public DbSet<Store.Model.Item> Item { get; set; } = default!;
+        public DbSet<Store.Model.Vendor> Vendor { get; set; } = default!;
     }
 }

@@ -1,0 +1,36 @@
+﻿@page
+@model Store.Pages.Vendor.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles del proveedor</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nombre
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Numero de teléfono
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Representante
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vendor.Contact)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Vendor.Id">Editar</a> |
+    <a asp-page="./Index">Volver a la lista</a>
+</div>
